@@ -44,7 +44,25 @@
 //     })
 // ============================================================
 
-// YOUR CODE HERE
+gsap.from("#mainNav", { opacity: 0, y: -20, duration: 0.5 });
+
+const heroTl = gsap.timeline();
+heroTl
+  .from("#heroEyebrow", { opacity: 0, y: -20, duration: 0.5 })
+  .from("#heroLine1", { opacity: 0, x: -40, duration: 0.6 })
+  .from("#heroLine2", { opacity: 0, x: 40, duration: 0.6 }, "-=0.3")
+  .from("#heroSub", { opacity: 0, y: 20, duration: 0.5 })
+  .from("#heroActions", { opacity: 0, y: 20, duration: 0.4 })
+  .from("#heroBadges", { opacity: 0, duration: 0.4 });
+
+gsap.from(".float-card", {
+  opacity: 0,
+  y: 60,
+  rotation: -5,
+  duration: 0.7,
+  ease: "back.out(1.5)",
+  stagger: 0.15,
+});
 
 // ============================================================
 //  TASK 2 — Stats Counter Animation  (4 points)
