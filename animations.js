@@ -98,7 +98,32 @@ gsap.from(".float-card", {
 //     })
 // ============================================================
 
-// YOUR CODE HERE
+gsap.from("#statsTicker", { opacity: 0, y: 30, duration: 0.6 });
+
+const counters = { users: 0, tracks: 0, artists: 0 };
+
+gsap.to(counters, {
+  users: 12400,
+  tracks: 85000,
+  artists: 3200,
+  duration: 2,
+  ease: "power2.out",
+  onUpdate: function () {
+    document.getElementById("numUsers").textContent = Math.floor(
+      counters.users,
+    ).toLocaleString();
+    document.getElementById("numTracks").textContent = Math.floor(
+      counters.tracks,
+    ).toLocaleString();
+    document.getElementById("numArtists").textContent = Math.floor(
+      counters.artists,
+    ).toLocaleString();
+  },
+});
+
+gsap.delayedCall(0.5, function () {
+  document.getElementById("numFunding").textContent = "$500K";
+});
 
 // ============================================================
 //  TASK 3 — Features Grid Stagger  (4 points)
