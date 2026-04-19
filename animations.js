@@ -47,14 +47,17 @@
 gsap.from("#mainNav", { opacity: 0, y: -20, duration: 0.5 });
 
 const heroTl = gsap.timeline();
+// Sequence hero text so each line draws focus before revealing the next.
 heroTl
   .from("#heroEyebrow", { opacity: 0, y: -20, duration: 0.5 })
   .from("#heroLine1", { opacity: 0, x: -40, duration: 0.6 })
+  // Slight overlap keeps the two headline lines feeling connected.
   .from("#heroLine2", { opacity: 0, x: 40, duration: 0.6 }, "-=0.3")
   .from("#heroSub", { opacity: 0, y: 20, duration: 0.5 })
   .from("#heroActions", { opacity: 0, y: 20, duration: 0.4 })
   .from("#heroBadges", { opacity: 0, duration: 0.4 });
 
+// Bring decorative cards in with a playful stagger and slight rotation.
 gsap.from(".float-card", {
   opacity: 0,
   y: 60,
@@ -108,6 +111,7 @@ gsap.to(counters, {
   artists: 3200,
   duration: 2,
   ease: "power2.out",
+  // Sync animated number values to the DOM on each frame.
   onUpdate: function () {
     document.getElementById("numUsers").textContent = Math.floor(
       counters.users,
@@ -169,6 +173,7 @@ gsap.from(".feature-card", {
   stagger: { each: 0.1, from: "start" },
 });
 
+// Hover lift gives each feature card a tactile response.
 document.querySelectorAll(".feature-card").forEach(function (card) {
   card.addEventListener("mouseenter", function () {
     gsap.to(card, { y: -6, scale: 1.02, duration: 0.2 });
@@ -226,6 +231,7 @@ gsap.from(".pl-track", {
 const allTracks = document.querySelectorAll(".pl-track");
 allTracks.forEach(function (track) {
   track.addEventListener("click", function () {
+    // Reset selection so only one track appears active at a time.
     gsap.to(allTracks, { backgroundColor: "transparent", duration: 0.2 });
     gsap.to(track, {
       backgroundColor: "rgba(29,185,84,0.15)",
@@ -286,6 +292,7 @@ gsap.from(".price-card", {
 });
 
 gsap.to(".price-btn-primary", {
+  // Continuous yoyo pulse to keep attention on the featured plan CTA.
   scale: 1.05,
   duration: 0.8,
   repeat: -1,
