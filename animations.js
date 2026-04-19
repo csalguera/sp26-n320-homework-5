@@ -209,7 +209,30 @@ document.querySelectorAll(".feature-card").forEach(function (card) {
 //     })
 // ============================================================
 
-// YOUR CODE HERE
+const plTl = gsap.timeline();
+plTl
+  .from("#playlistTitle", { opacity: 0, x: -30, duration: 0.5 })
+  .from("#playlistSub", { opacity: 0, x: -20, duration: 0.4 }, "-=0.2");
+
+gsap.from(".pl-track", {
+  opacity: 0,
+  x: -60,
+  duration: 0.4,
+  ease: "power2.out",
+  stagger: 0.12,
+  delay: 0.4,
+});
+
+const allTracks = document.querySelectorAll(".pl-track");
+allTracks.forEach(function (track) {
+  track.addEventListener("click", function () {
+    gsap.to(allTracks, { backgroundColor: "transparent", duration: 0.2 });
+    gsap.to(track, {
+      backgroundColor: "rgba(29,185,84,0.15)",
+      duration: 0.2,
+    });
+  });
+});
 
 // ============================================================
 //  TASK 5 — Pricing Cards Bounce In + Button Pulse  (3 points)
