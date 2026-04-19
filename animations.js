@@ -269,4 +269,28 @@ allTracks.forEach(function (track) {
 //     gsap.from('#siteFooter', { opacity: 0, y: 20, duration: 0.6 })
 // ============================================================
 
-// YOUR CODE HERE
+gsap.from(["#pricingTitle", "#pricingSub"], {
+  opacity: 0,
+  y: 30,
+  duration: 0.5,
+  stagger: 0.15,
+});
+
+gsap.from(".price-card", {
+  opacity: 0,
+  y: 60,
+  scale: 0.9,
+  duration: 0.6,
+  ease: "back.out(1.7)",
+  stagger: 0.15,
+});
+
+gsap.to(".price-btn-primary", {
+  scale: 1.05,
+  duration: 0.8,
+  repeat: -1,
+  yoyo: true,
+  ease: "sine.inOut",
+});
+
+gsap.from("#siteFooter", { opacity: 0, y: 20, duration: 0.6 });
