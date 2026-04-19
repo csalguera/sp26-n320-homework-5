@@ -155,7 +155,28 @@ gsap.delayedCall(0.5, function () {
 //     })
 // ============================================================
 
-// YOUR CODE HERE
+const featTl = gsap.timeline();
+featTl
+  .from("#featuresTitle", { opacity: 0, y: 30, duration: 0.5 })
+  .from("#featuresSub", { opacity: 0, y: 20, duration: 0.4 }, "-=0.2");
+
+gsap.from(".feature-card", {
+  opacity: 0,
+  y: 50,
+  scale: 0.95,
+  duration: 0.5,
+  ease: "power2.out",
+  stagger: { each: 0.1, from: "start" },
+});
+
+document.querySelectorAll(".feature-card").forEach(function (card) {
+  card.addEventListener("mouseenter", function () {
+    gsap.to(card, { y: -6, scale: 1.02, duration: 0.2 });
+  });
+  card.addEventListener("mouseleave", function () {
+    gsap.to(card, { y: 0, scale: 1, duration: 0.2 });
+  });
+});
 
 // ============================================================
 //  TASK 4 — Playlist Slide-In  (4 points)
